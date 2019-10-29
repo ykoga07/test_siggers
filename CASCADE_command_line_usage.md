@@ -11,9 +11,12 @@ You should now be in an R shell on the cluster. To install the R packages used b
 install.packages("ggplot2")
 install.packages("cowplot")
 ```
-You may need to intervene by selecting a CRAN mirror after executing the first command. Once you receive confirmation that the above packages were successfully installed, you can exit R and bring yourself back to the UNIX shell by using:```
+You may need to intervene by selecting a CRAN mirror after executing the first command. Once you receive confirmation that the above packages were successfully installed, you can exit R and bring yourself back to the UNIX shell by using:
+
+```
 q()
 ```
+
 ### Rscript description 
 To run a CASCADE analysis on the command line (SCC cluster), upload the CASCADE_analysis.R Rscript to the desired folder and submit the following command to the queue: 
 Rscript CASCADE_analysis.R args[1] args[2] args[3] args[4] args[5] args[6] 
