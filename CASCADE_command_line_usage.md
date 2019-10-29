@@ -3,8 +3,10 @@
 The CASCADE_analysis.R Rscript uses several downloadable R packages to plot data. These packages need to be installed to your version of R/3.5.2 prior to running the script for the first time. For all subsequent runs, the packages do not need to be installed again. 
 To open the version of R used by the CASCADE_analysis.R script, run the following commands on the cluster: 
 
+```
 module load R/3.5.2
 R
+```
 
 You should now be in an R shell on the cluster. To install the R packages used by CASCADE_analysis.R, run the following commands within the R shell: 
 
@@ -12,7 +14,9 @@ install.packages("ggplot2")
 install.packages("cowplot")
 
 You may need to intervene by selecting a CRAN mirror after executing the first command. Once you receive confirmation that the above packages were successfully installed, you can exit R and bring yourself back to the UNIX shell by using: 
+```
 q()
+```
 
 ### Rscript description 
 To run a CASCADE analysis on the command line (SCC cluster), upload the CASCADE_analysis.R Rscript to the desired folder and submit the following command to the queue: 
