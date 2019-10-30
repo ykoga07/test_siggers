@@ -69,7 +69,7 @@ This argument is simply the location on the cluster that contains the data matri
 /projectnb/siggers/data/enh_tile_project/analysis/CASCADE/PBM_matrices/ 
 It is a subdirectory in the larger CASCADE analysis directory. As of now, the folder has the following contents:
 
-XXX
+![alternativetext](screenshots/CASCADE2.png)
 
 As shown above, all the .dat files have the same formatting. The names of future data matrices should use the conventions used by the other files. 
 Path to text file with the array conditions (listed in order) - args[5] 
@@ -79,7 +79,7 @@ a2_run2_exp.txt
 ```
 The format of the text file expected is summarized below:
 
-XXX
+![alternativetext](screenshots/CASCADE3.png)
 
 There must be one line for each experiment and a final empty line. So far, I have been using the naming convention: <cell condition 1>_<cell condition 2>_<antibody> 
 Path to text file that contains previously annotated TF sites - args[6] 
@@ -90,20 +90,24 @@ ENH_TILE_001_TF_sites.txt
 It is a plain text file that contains information about known TF sites within a locus contained in the given array design including a name for the site, where it starts within the locus, where it ends, and what color 
 (hexadecimal format) should be used to plot the site: 
 
-xxx
+![alternativetext](screenshots/CASCADE4.png)
 
 The information is used by the locus logo plotting module in the generation of the genomic ladder:
+
+![alternativetext](screenshots/CASCADE5.png)
 
 Shell script usage 
 To use the command line version of the CASCADE_analysis.R script, create and qsub a shell script that includes the UNIX command to run the Rscript using the 6 arguments that need to be provided by the user. The shell script is a text file that contains the following text:
 
-XXX
+![alternativetext](screenshots/CASCADE6.png)
 
 The easiest way to generate the above file is to modify an existing shell script in the following SCC directory: /projectnb/siggers/data/enh_tile_project/analysis/CASCADE/ 
 
 Arguments that will need to be changed: 
 
-XXX
+a2_run2 - modify this to the desired name of the current run
+ENH_CASCADE_XXX - modify this to the prefix used for the data matrices
+a2_run_exp.txt - modify this to the text file used to describe the experimental metadata for the current experiment
 
 The rest of the arguments can remain the same provided that you run the script from the above SCC directory. I usually CTRL+F and replace the array run tag (a2_run2) with a name for the current run and modify the date following the ENH_CASCADE_ prefix. Within the file header, you can also change the email to your own so you can receive a notification when the script is done running. For a 16 experiment array, it takes about an hour. 
 To prepare the script to be executed, upload it to the above SCC directory. If you generated the text file using a Windows text editor, it may need to be converted to UNIX format first. To do this, run the following command on the cluster after uploading the shell script: 
@@ -118,6 +122,8 @@ qsub -P PROJECTNAME CASCADE_analysis.sh
 ```
 Output directory description 
 A directory named using args[1] from the user-specified arguments is created as a subdirectory within the directory that CASCADE_analysis.R was called from. Using the "a2_run2" example, the directory will have the following contents: 
+
+![alternativetext](screenshots/CASCADE7.png)
 
 The above folders contain (respectively), the locus logos for each of conditions tested and each of the seeds included on a given array design, the orientation comparison scatters for each experiment, PDFs containing the pairwise comparison scatters between an experiment and each other experiment, the sorted data matrices, and the logos for individual tiles within a locus for each PBM experiment. 
 
