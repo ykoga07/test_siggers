@@ -56,7 +56,7 @@ ENH_CASCADE_013019_br.dat
 ENH_CASCADE_013019_or.dat
 ```
 The prefix is also used to name a text file in the output directory that contains a full matrix that includes the array annotation as well as all of the data matrix columns.   
-####Path to annotation table - args[3] 
+#### Path to annotation table - args[3] 
 This argument is simply the location on the cluster (including file name) where the CASCADE annotation file is located. This file will be the same for a given array design. If the file is uploaded to the same directory as where the CASCADE_analysis.R script is being run from, then only the file name needs to be specified. If running from the /projectnb/siggers/data/enh_tile_project/analysis/CASCADE/ directory, then the argument is only: 
 ```
 ENH_TILE_001_FULL_ANNOT.bed 
