@@ -19,31 +19,33 @@ q()
 
 ### Rscript description 
 To run a CASCADE analysis on the command line (SCC cluster), upload the CASCADE_analysis.R Rscript to the desired folder and submit the following command to the queue: 
+```
 Rscript CASCADE_analysis.R args[1] args[2] args[3] args[4] args[5] args[6] 
+```
 Arguments for the script are the following:
 
-args[1] desired output directory name 
-args[2] data matrix prefix 
-args[3] path to annotation table 
-args[4] path to directory with data matrices 
-args[5] path to text file with the array conditions (listed in order) 
-args[6] path to text file that contains previously annotated TF sites
+args[1] desired output directory name  
+args[2] data matrix prefix  
+args[3] path to annotation table   
+args[4] path to directory with data matrices  
+args[5] path to text file with the array conditions (listed in order)  
+args[6] path to text file that contains previously annotated TF sites  
+  
+Since the script takes a while to run, the command needs to be submitted to the queue using a shell script (more info in section below). To view an example, head to the following directory:  
+/projectnb/siggers/data/enh_tile_project/analysis/CASCADE/  
+Within the "CASCADE_a2_run2.sh" script, we can see the 6 arguments above after the Rscript call:  
 
-Since the script takes a while to run, the command needs to be submitted to the queue using a shell script (more info in section below). To view an example, head to the following directory: 
-/projectnb/siggers/data/enh_tile_project/analysis/CASCADE/ 
-Within the "CASCADE_a2_run2.sh" script, we can see the 6 arguments above after the Rscript call: 
+args[1] a2_run2  
+args[2] ENH_CASCADE_013019  
+args[3] ENH_TILE_001_FULL_ANNOT.bed  
+args[4] /projectnb/siggers/data/enh_tile_project/analysis/CASCADE/PBM_matrices   
+args[5] a2_run2_exp.txt  
+args[6] ENH_TILE_001_TF_sites.txt  
 
-args[1] a2_run2 
-args[2] ENH_CASCADE_013019 
-args[3] ENH_TILE_001_FULL_ANNOT.bed 
-args[4] /projectnb/siggers/data/enh_tile_project/analysis/CASCADE/PBM_matrices 
-args[5] a2_run2_exp.txt 
-args[6] ENH_TILE_001_TF_sites.txt 
-
-The Rscript creates a directory (where ever the script is called from) named using args[1]. The data matrices that begin with the prefix from args[2] are read from the path listed in args[4]. The metadata described in the text file specified by args[5] is used to interpret the columns in the data matrices and these data columns are bound to the array design annotation specified by args[3]. The final args[6] is used to annotate previously known TF sites in the loci included in the given CASCADE design. 
+The Rscript creates a directory (where ever the script is called from) named using args[1]. The data matrices that begin with the prefix from args[2] are read from the path listed in args[4]. The metadata described in the text file specified by args[5] is used to interpret the columns in the data matrices and these data columns are bound to the array design annotation specified by args[3]. The final args[6] is used to annotate previously known TF sites in the loci included in the given CASCADE design.<br/> 
 
 ### Arguments descriptions and formatting 
-Desired output directory name - args[1] 
+Desired output directory name - args[1] <br/>
 This is simply a user-specified name to use as a larger directory to contain all of the subdirectories generated during the analysis. So far I have been using a short descriptor that combines the array number with the run number (like "a2_run2"). The name is also used in the column names of the full annotation table generated so it should be short and not contain any spaces. 
 Data matrix prefix - args[2] 
 This prefix should match the prefix of all relevant data matrices for the current array run. The script expects a corresponding "o1", "o2", "br", and "or" data matrices with the ".dat" file suffix to be within the directory specified by args[4] below. So for example, for the a2_run2 array, args[2] is "ENH_CASCADE_013019" and the following files should be uploaded to the folder in args[4] prior to running the script: 
