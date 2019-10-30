@@ -96,7 +96,7 @@ The information is used by the locus logo plotting module in the generation of t
 
 ![alternativetext](screenshots/CASCADE5.png)
 
-Shell script usage 
+### Shell script usage 
 To use the command line version of the CASCADE_analysis.R script, create and qsub a shell script that includes the UNIX command to run the Rscript using the 6 arguments that need to be provided by the user. The shell script is a text file that contains the following text:
 
 ![alternativetext](screenshots/CASCADE6.png)
@@ -120,7 +120,7 @@ To submit the shell script to the cluster to be executed, use the following comm
 ```
 qsub -P PROJECTNAME CASCADE_analysis.sh
 ```
-Output directory description 
+### Output directory description 
 A directory named using args[1] from the user-specified arguments is created as a subdirectory within the directory that CASCADE_analysis.R was called from. Using the "a2_run2" example, the directory will have the following contents: 
 
 ![alternativetext](screenshots/CASCADE7.png)
